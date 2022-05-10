@@ -4,45 +4,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find My Car</title>
+  <title>FindMyCar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
+<!-- Footer -->
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <img src="../../assets/imgs/logoOption2.jpg" style="width:133px; height:98px;" />
-      </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login/Sign-up</a>
-        {{/if}}
-      </nav>
-    </header>
-    <div class="custom-shape-divider-top-1649862465">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M1200 0L0 0 892.25 114.72 1200 0z" class="shape-fill"></path>
-        </svg>
-      </div>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-    <footer>
+  <header class="display-flex justify-space-between align-center ">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="/images/MarkupTag-white-logo.png" alt="" class="img-fluid" />Find My
+          Car</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Saved Cars</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link hide" href="#">Log Out</a>
+            </li>
 
-    </footer>
-  </div>
+          </ul>
+          <div class="d-flex">
 
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+            <button class="btn btn-light ms-3">Login / Sign Up</button>
+          </div>
+        </div>
+  </header>
+
+  <main class="container container-fluid mt-5">
+    <!-- Render the sub layout -->
+    {{{ body }}}
+  </main>
+
+  <!-- Footer -->
+  <footer class="page-footer font-small blue ">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-4 bg-primary text-white mt-5">Created By: Evelyn Frech, Jorge
+      Gonzalez, Edwin Toro-Garcia, & Stephanie Chaparro
+
+      <a href="https://github.com/fusionneo/findmycar"><i class="fa fa-github text-white"
+          style="font-size:36px"></i></a>
+
+    </div>
+  </footer>
 </body>
-
-</html>
