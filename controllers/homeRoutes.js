@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
+const { getRecalls } = require('../utils/nhtsa_api');
+const nhtsa = require('../utils/nhtsa_api');
 
 router.get('/', async (req, res) => {
   try {
@@ -77,6 +79,53 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login');
+});
+
+router.get('/recalls', async (req, res) => {
+
+  res.render('recalls');
+});
+
+router.post('/recalls/results', async (req, res) => {
+  try {
+    const recallsResults = await nhtsa.getRecalls(req.body['recall-make'], req.body['recall-model'], req.body['recall-year']);
+console.log(recallsResults);
+     res.render('recalls-results', {
+      recallsResults
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.get('/safety-ratings', async (req, res) => {
+
+  res.render('safety-ratings');
+});
+
+router.post('/safety-ratings/vehicles', async (req, res) => {
+  try {
+    console.log(req.body);
+    const vehicles = await nhtsa.getVehicleId(req.body['year'], req.body['make'], req.body['model']);
+console.log(vehicles)
+     res.render('safety-ratings-vehicles', {
+      vehicles
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.get('/safety-ratings/:vehicleId', async (req, res) => {
+  try {
+    const safetyRatings = await nhtsa.getSafetyRatings(req.params.vehicleId);
+
+     res.render('safety-ratings-results', {
+      safetyRatings
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 module.exports = router;
