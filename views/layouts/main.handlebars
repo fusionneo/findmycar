@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
+  <title>Find My Car</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -13,8 +13,7 @@
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
+        <img src="../../assets/imgs/logoOption2.jpg" style="width:133px; height:98px;" />
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
@@ -22,16 +21,21 @@
         <a href="/profile">profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login">login/Sign-up</a>
         {{/if}}
       </nav>
     </header>
+    <div class="custom-shape-divider-top-1649862465">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M1200 0L0 0 892.25 114.72 1200 0z" class="shape-fill"></path>
+        </svg>
+      </div>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
     <footer>
-      
+
     </footer>
   </div>
 

@@ -1,0 +1,21 @@
+<!-- Loop over each object in the projects array -->
+{{#each safetyRatings.Results as |safety| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2> Showing results for: {{safety.VehicleDescription}}
+    </h2>
+    <img src="{{safety.VehiclePicture}}"/>
+    <br>
+      <h3>Overall Safety Rating: {{safety.OverallRating}}</h3>
+    <ul>
+        <li>Rating breakdown:</li>
+        <li>Overall front crash rating: {{safety.OverallFrontCrashRating}}</li>
+        <li>Overall side crash rating: {{safety.OverallSideCrashRating}}</li>
+        <li>Total Recalls: {{safety.RecallsCount}}</li>
+        <li>Total user's complaints received at NHTSA: {{safety.ComplaintsCount}}</li>
+    </ul>
+    <br>
+    <small>All information provided by: National Highway Traffic Safety Administration</small>
+  </div>
+</div>
+{{/each}}

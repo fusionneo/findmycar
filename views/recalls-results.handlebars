@@ -1,0 +1,18 @@
+<!-- Loop over each object in the projects array -->
+<h2>{{recallsResults.Count}} Recall(s) found</h2>
+{{#each recallsResults.results as |recalls| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h3>
+       {{recalls.Make}} | {{recalls.Model}} | {{recalls.ModelYear}}
+    </h3>
+    <ul>
+        <li>Recall received date: {{recalls.ReportReceivedDate}}</li>
+        <li>Component: {{recalls.Component}}</li>
+        <li>Summary: {{recalls.Summary}}</li>
+        <li>Consequence: {{recalls.Consequence}}</li>
+        <li>Solution: {{recalls.Remedy}}</li>
+    </ul>
+  </div>
+</div>
+{{/each}}
