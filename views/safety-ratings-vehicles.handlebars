@@ -1,11 +1,12 @@
 <!-- Loop over each object in the projects array -->
-<h2>{{vehicles.Count}} options found. Select your vehicle</h2>
+<section class="col-md-6 offset-md-3">
+<h2>{{vehicles.Count}} options found.</h2>
+<h3>Select your vehicle</h3>
 {{#each vehicles.Results as |vehicle| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <ul>
-        <li>Vehicle description: <a href="/safety-ratings/{{vehicle.VehicleId}}">{{vehicle.VehicleDescription}}</a></li>
+<div class="row">
+    <ul class="list-group">
+        <li style="">Vehicle description: <a href="/safety-ratings/{{vehicle.VehicleId}}">{{vehicle.VehicleDescription}}</a></li>
     </ul>
-  </div>
 </div>
 {{/each}}
+</section>
