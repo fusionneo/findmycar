@@ -21,40 +21,18 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/project/:id', async (req, res) => {
-  try {
-    const projectData = await Project.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-
-    const project = projectData.get({ plain: true });
-
-    res.render('project', {
-      ...project,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+      // include: [{ model: Cars }],
     });
 
     const user = userData.get({ plain: true });
 
-    res.render('profile', {
+    res.render('homepage', {
       ...user,
       logged_in: true
     });
@@ -83,7 +61,16 @@ router.get("/signup", (req, res) => {
 
 router.get('/recalls', async (req, res) => {
 
-  res.render('recalls');
+  res.render('recalls', { 
+    logged_in: req.session.logged_in 
+  });
+});
+
+router.get('/car-search', withAuth, async (req, res) => {
+
+  res.render('car-search', { 
+    logged_in: req.session.logged_in 
+  });
 });
 
 router.post('/recalls/results', async (req, res) => {
@@ -91,7 +78,8 @@ router.post('/recalls/results', async (req, res) => {
     const recallsResults = await nhtsa.getRecalls(req.body['recall-make'], req.body['recall-model'], req.body['recall-year']);
 console.log(recallsResults);
      res.render('recalls-results', {
-      recallsResults
+      recallsResults,
+      logged_in: req.session.logged_in 
     });
   } catch (err) {
     res.status(400).json(err);
@@ -100,7 +88,9 @@ console.log(recallsResults);
 
 router.get('/safety-ratings', async (req, res) => {
 
-  res.render('safety-ratings');
+  res.render('safety-ratings', {
+    logged_in: req.session.logged_in 
+  });
 });
 
 router.post('/safety-ratings/vehicles', async (req, res) => {
