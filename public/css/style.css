@@ -1,3 +1,21 @@
+
+/* Modify login button*/
+.btn-bd-login {
+  font-weight: 600;
+  color: #ffe484;
+  border-color: #ffe484;
+}
+
+.btn-bd-login:hover {
+  font-weight: 600;
+  color: #ecc436;
+  border-color: #fbfbfb;
+}
+
+li {
+  list-style: none;
+}
+
 /* === Forms === */
 form {
   width: 100%;
