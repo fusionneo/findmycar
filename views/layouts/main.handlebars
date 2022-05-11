@@ -21,12 +21,12 @@
         Car</a>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
-          </li>
+          {{#if logged_in}}
           <li class="nav-item">
             <a class="nav-link" href="#">My Saved Cars</a>
+            {{/if}}
           </li>
+          
         </ul>
       </div>
       <!-- Conditionally render login or logout links -->
