@@ -1,40 +1,49 @@
 const router = require('express').Router();
+const { Op } = require("sequelize");
 const { Cars } = require('../../models');
-const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+// router.get('/:id', async (req, res) => {
+//   try {
+//     const carData = await Cars.findAll({
+//       where: {
+//         id: req.params.id
+//       },
+//     })
+
+//     // Serialize data so the template can read it
+//     const cars = carData.map((cars) => cars.get({ plain: true }));
+
+//     res.status(200).json(cars);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
+
+router.post('/search', async (req, res) => {
+  console.log(req.body)
   try {
-    const newProject = await Project.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
+    const carData = await Cars.findAll({
+      where: {
+        Year: {
+          [Op.gte]: req.body.year
+        },
+        passengerCapacity: {
+          [Op.gte]: req.body.passengerCapacity
+        },
+        MSRP: {
+          [Op.gte]: req.body.MSRP
+        },
+      },
+    })
 
-    res.status(200).json(newProject);
+    // Serialize data so the template can read it
+    const cars = carData.map((cars) => cars.get({ plain: true }));
+    res.status(200).json(cars);
   } catch (err) {
     res.status(400).json(err);
   }
+
 });
-
-router.delete('/:id', withAuth, async (req, res) => {
-  try {
-    const projectData = await Project.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
-
-    if (!projectData) {
-      res.status(404).json({ message: 'No project found with this id!' });
-      return;
-    }
-
-    res.status(200).json(projectData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 router.get('/', async (req, res) => {
   try {
     const carData = await Cars.findAll();

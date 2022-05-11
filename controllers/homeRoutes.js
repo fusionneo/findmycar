@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Cars, User } = require('../models');
 const withAuth = require('../utils/auth');
 const nhtsa = require('../utils/nhtsa_api');
+// const api = require('../utils/internal_api');
 
 router.get('/', async (req, res) => {
   try {
@@ -93,29 +94,62 @@ router.get('/safety-ratings', async (req, res) => {
   });
 });
 
+router.get('/safety-ratings/:vehicleId', async (req, res) => {
+  try {
+    const safetyRatings = await nhtsa.getSafetyRatings(req.params.vehicleId);
+
+     res.render('safety-ratings-results', {
+      safetyRatings,
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 router.post('/safety-ratings/vehicles', async (req, res) => {
   try {
     console.log(req.body);
     const vehicles = await nhtsa.getVehicleId(req.body['year'], req.body['make'], req.body['model']);
 console.log(vehicles)
      res.render('safety-ratings-vehicles', {
-      vehicles
+      vehicles,
+      logged_in: req.session.logged_in 
     });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.get('/safety-ratings/:vehicleId', async (req, res) => {
+router.get('/cars-results', async (req, res) => {
+  console.log(req.body)
   try {
-    const safetyRatings = await nhtsa.getSafetyRatings(req.params.vehicleId);
+    const carData = await Cars.findAll({
+      where: {
+        Year: {
+          [Op.gte]: req.body.year
+        },
+        passengerCapacity: {
+          [Op.gte]: req.body.passengerCapacity
+        },
+        MSRP: {
+          [Op.gte]: req.body.MSRP
+        },
+      },
+    })
 
-     res.render('safety-ratings-results', {
-      safetyRatings
+    // Serialize data so the template can read it
+    const cars = carData.map((cars) => cars.get({ plain: true }));
+    
+    res.render('cars-results', {
+      cars,
+      logged_in: req.session.logged_in 
     });
+
+    res.status(200).json(cars);
   } catch (err) {
     res.status(400).json(err);
   }
-});
 
+});
 module.exports = router;
