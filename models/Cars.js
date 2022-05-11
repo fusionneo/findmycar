@@ -1,47 +1,52 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Project extends Model {}
+class Cars extends Model {}
 
-Project.init(
+Cars.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    name: {
+    CompleteCarModel: {
       type: DataTypes.STRING,
       allowNull: false,
+      primaryKey: true
     },
-    description: {
+    Year: {
+      type: DataTypes.INTEGER,
+    },
+    Model: {
       type: DataTypes.STRING,
     },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    needed_funding: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-    },
-    user_id: {
+    cityGasMileage: {
       type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
+    },
+    highwayGasMileage: {
+      type: DataTypes.INTEGER
+    },
+    avgGasMileage: {
+      type: DataTypes.INTEGER
+    },
+    passengerCapacity: {
+      type: DataTypes.INTEGER
+    },
+    bodyStyle: {
+      type: DataTypes.STRING,
+    },
+    fogLamps: {
+      type: DataTypes.BOOLEAN,
+    },
+    tirePressureMonitor: {
+      type: DataTypes.BOOLEAN,
+    },
+    backUpCamera: {
+      type: DataTypes.BOOLEAN,
     },
   },
   {
     sequelize,
     timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'project',
+    freezeTableName: false,
+    modelName: 'Cars',
   }
 );
 
-module.exports = Project;
+module.exports = Cars;

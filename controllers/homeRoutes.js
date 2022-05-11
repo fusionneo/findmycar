@@ -1,19 +1,12 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Cars, User } = require('../models');
 const withAuth = require('../utils/auth');
 const nhtsa = require('../utils/nhtsa_api');
 
 router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+    const projectData = await Cars.findAll();
 
     // Serialize data so the template can read it
     const projects = projectData.map((project) => project.get({ plain: true }));
