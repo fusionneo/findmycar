@@ -99,7 +99,8 @@ router.post('/safety-ratings/vehicles', async (req, res) => {
     const vehicles = await nhtsa.getVehicleId(req.body['year'], req.body['make'], req.body['model']);
 console.log(vehicles)
      res.render('safety-ratings-vehicles', {
-      vehicles
+      vehicles,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(400).json(err);
@@ -111,7 +112,8 @@ router.get('/safety-ratings/:vehicleId', async (req, res) => {
     const safetyRatings = await nhtsa.getSafetyRatings(req.params.vehicleId);
 
      res.render('safety-ratings-results', {
-      safetyRatings
+      safetyRatings,
+      logged_in: req.session.logged_in 
     });
   } catch (err) {
     res.status(400).json(err);
