@@ -39,13 +39,13 @@ Cars.init(
       type: DataTypes.STRING,
     },
     fogLamps: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
     },
     tirePressureMonitor: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
     },
     backUpCamera: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
     },
   },
   {

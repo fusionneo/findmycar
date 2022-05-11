@@ -19,19 +19,19 @@ const { Cars } = require('../../models');
 //   }
 // });
 
-router.post('/search', async (req, res) => {
-  console.log(req.body)
+router.get('/search', async (req, res) => {
   try {
     const carData = await Cars.findAll({
+      limit: 5,
       where: {
         Year: {
-          [Op.gte]: req.body.year
+          [Op.gte]: req.query.year
         },
         passengerCapacity: {
-          [Op.gte]: req.body.passengerCapacity
+          [Op.gte]: req.query.passenger
         },
         MSRP: {
-          [Op.gte]: req.body.MSRP
+          [Op.gte]: req.query.msrp
         },
       },
     })

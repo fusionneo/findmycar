@@ -4,6 +4,7 @@
   font-weight: 600;
   color: #ffe484;
   border-color: #ffe484;
+  margin: 15px; 
 }
 
 .btn-bd-login:hover {

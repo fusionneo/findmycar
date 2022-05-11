@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Cars, User } = require('../models');
 const withAuth = require('../utils/auth');
 const nhtsa = require('../utils/nhtsa_api');
+const axios = require('axios');
 // const api = require('../utils/internal_api');
 
 router.get('/', async (req, res) => {
@@ -121,32 +122,16 @@ console.log(vehicles)
   }
 });
 
-router.get('/cars-results', async (req, res) => {
-  console.log(req.body)
+router.post('/cars-results', async (req, res) => {
   try {
-    const carData = await Cars.findAll({
-      where: {
-        Year: {
-          [Op.gte]: req.body.year
-        },
-        passengerCapacity: {
-          [Op.gte]: req.body.passengerCapacity
-        },
-        MSRP: {
-          [Op.gte]: req.body.MSRP
-        },
-      },
-    })
-
     // Serialize data so the template can read it
-    const cars = carData.map((cars) => cars.get({ plain: true }));
-    
+    const response = await axios.get(`http://localhost:3001/api/cars/search?passenger=${req.body["passengerCapacity"]}&msrp=${req.body["msrp"]}&year=${req.body["year"]}`);
+    const cars = response.data;
+
     res.render('cars-results', {
       cars,
       logged_in: req.session.logged_in 
     });
-
-    res.status(200).json(cars);
   } catch (err) {
     res.status(400).json(err);
   }
