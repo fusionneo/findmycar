@@ -5,16 +5,23 @@ class Cars extends Model {}
 
 Cars.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true
+    },
     CompleteCarModel: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true
     },
     Year: {
       type: DataTypes.INTEGER,
     },
     Model: {
       type: DataTypes.STRING,
+    },
+    MSRP: {
+      type: DataTypes.INTEGER
     },
     cityGasMileage: {
       type: DataTypes.INTEGER,
