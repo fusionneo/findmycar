@@ -1,20 +1,17 @@
 <!-- Loop over each object in the projects array -->
-  {{!-- {{#if cars.length === 0}}
-  <h1>no results</h1>
-    {{/if}} --}}
-    <h2>
-      Here are a few suggestions that match your search:
-    </h2>
+<h2>
+  Here are a few suggestions that match your search:
+</h2>
 {{#each cars as |car| }}
 
 <div class="row mb-4 project">
   <div class="col-md-5">
     <ul>
-        <li>Car Model: {{car.Model}}</li>
-        <li>MSRP: {{car.MSRP}}</li>
-        <li>Passenger Capacity: {{car.passengerCapacity}}</li>
-        <li>Year: {{car.Year}}</li>
-        <li>body Style: {{car.bodyStyle}}</li>
+      <li>Car Model: {{car.Model}}</li>
+      <li>MSRP: {{car.MSRP}}</li>
+      <li>Passenger Capacity: {{car.passengerCapacity}}</li>
+      <li>Year: {{car.Year}}</li>
+      <li>body Style: {{car.bodyStyle}}</li>
     </ul>
   </div>
 </div>
