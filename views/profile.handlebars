@@ -25,7 +25,7 @@
       </div>
       <div>
         <h3>Your Saved Cars:</h3>
-          <div class="container border border-primary p-4">
+          {{!-- <div class="container border border-primary p-4">
          {{#each projects as |project|}}
             <div class="row border border-danger p-4">
               <div class="col">
@@ -35,7 +35,31 @@
                 <p1>Car Name</p1>
               </div>
           </div>
-        {{/each}}
+        {{/each}} --}}
+    
+{{#each cars as |car|}}
+  <div class="row mb-4 project">
+    <div class="col-md-5">
+      <div class="card shadow p-3 mb-5 bg-white rounded" id="cardz" style="width: 65rem;">
+        <div class="card-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm specific">
+                <ul id="lists">
+              <li><strong> Model:</strong> {{car.Model}}</li>
+              <li><strong>MSRP:</strong> {{car.MSRP}}</li>
+              <li><strong>Capacity:</strong> {{car.passengerCapacity}}</li>
+              <li><strong>Year:</strong> {{car.Year}}</li>
+              <li><strong>Style:</strong> {{car.bodyStyle}}</li>
+              </ul>
+               <button class="btn btn-outline-danger btn-sm" style="font-size:24px">Favorite<i class="fa fa-heart"></i></button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/each}}
    
     
 

@@ -1,21 +1,31 @@
 <!-- Loop over each object in the projects array -->
-  {{!-- {{#if cars.length === 0}}
+{{!-- {{#if cars.length === 0}}
   <h1>no results</h1>
     {{/if}} --}}
-    <h2>
-      Here are a few suggestions that match your search:
-    </h2>
-{{#each cars as |car| }}
+<h2 id="title1">
+  Here are a few suggestions that match your search:
+</h2>
+{{#each cars as |car|}}
 
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <ul>
-        <li>Car Model: {{car.Model}}</li>
-        <li>MSRP: {{car.MSRP}}</li>
-        <li>Passenger Capacity: {{car.passengerCapacity}}</li>
-        <li>Year: {{car.Year}}</li>
-        <li>body Style: {{car.bodyStyle}}</li>
-    </ul>
+  <div class="row mb-4 project">
+    <div class="col-md-5">
+      <div class="card shadow p-3 mb-5 bg-white rounded" id="cardz" style="width: 65rem;">
+        <div class="card-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm specific">
+                <ul id="lists">
+              <li><strong> Model:</strong> {{car.Model}}</li>
+              <li><strong>MSRP:</strong> {{car.MSRP}}</li>
+              <li><strong>Capacity:</strong> {{car.passengerCapacity}}</li>
+              <li><strong>Year:</strong> {{car.Year}}</li>
+              <li><strong>Style:</strong> {{car.bodyStyle}}</li>
+              </ul>
+               <button class="btn btn-outline-danger btn-sm" style="font-size:24px">Favorite<i class="fa fa-heart"></i></button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 {{/each}}
