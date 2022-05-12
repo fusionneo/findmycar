@@ -1,18 +1,18 @@
 <!-- Loop over each object in the projects array -->
-<h2>{{recallsResults.Count}} Recall(s) found</h2>
+<h2><b>{{recallsResults.Count}}</b> Recall(s) found</h2>
 {{#each recallsResults.results as |recalls| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h3>
-       {{recalls.Make}} | {{recalls.Model}} | {{recalls.ModelYear}}
-    </h3>
-    <ul>
-        <li>Recall received date: {{recalls.ReportReceivedDate}}</li>
-        <li>Component: {{recalls.Component}}</li>
-        <li>Summary: {{recalls.Summary}}</li>
-        <li>Consequence: {{recalls.Consequence}}</li>
-        <li>Solution: {{recalls.Remedy}}</li>
-    </ul>
-  </div>
+<div class="col-md-12">
+  <h3>
+    {{recalls.Make}} | {{recalls.Model}} | {{recalls.ModelYear}}
+  </h3>
+  <ul>
+    <li><b>Recall received date: </b>{{recalls.ReportReceivedDate}}</li>
+    <li><b>Component: </b>{{recalls.Component}}</li>
+    <li><b>Summary: </b>{{recalls.Summary}}</li>
+    <li><b>Consequence: </b>{{recalls.Consequence}}</li>
+    <li><b>Solution: </b>{{recalls.Remedy}}</li>
+  </ul>
+  <br>
 </div>
 {{/each}}
+<small>All information provided by: National Highway Traffic Safety Administration</small>
