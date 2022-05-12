@@ -1,10 +1,6 @@
-<!-- Loop over each object in the projects array -->
-{{!-- {{#if cars.length === 0}}
-  <h1>no results</h1>
-    {{/if}} --}}
-<h2 id="title1">
+<h3>
   Here are a few suggestions that match your search:
-</h2>
+</h3>
 {{#each cars as |car|}}
 
   <div class="row mb-4 project">
@@ -21,7 +17,6 @@
               <li><strong>Year:</strong> {{car.Year}}</li>
               <li><strong>Style:</strong> {{car.bodyStyle}}</li>
               </ul>
-               <button class="btn btn-outline-danger btn-sm" style="font-size:24px">Favorite<i class="fa fa-heart"></i></button>
               </div>
           </div>
         </div>

@@ -3,7 +3,6 @@ const { Cars, User } = require('../models');
 const withAuth = require('../utils/auth');
 const nhtsa = require('../utils/nhtsa_api');
 const axios = require('axios');
-// const api = require('../utils/internal_api');
 
 router.get('/', async (req, res) => {
   try {
@@ -29,7 +28,6 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      // include: [{ model: Cars }],
     });
 
     const user = userData.get({ plain: true });
@@ -121,7 +119,6 @@ router.post('/safety-ratings/vehicles', async (req, res) => {
 
 router.post('/cars-results', async (req, res) => {
   try {
-    // Serialize data so the template can read it
     const response = await axios.get(`http://localhost:3001/api/cars/search?passenger=${req.body["passengerCapacity"]}&msrp=${req.body["msrp"]}&year=${req.body["year"]}`);
     const cars = response.data;
 
