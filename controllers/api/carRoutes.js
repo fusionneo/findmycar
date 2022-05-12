@@ -38,6 +38,8 @@ router.get('/search', async (req, res) => {
 
     // Serialize data so the template can read it
     const cars = carData.map((cars) => cars.get({ plain: true }));
+
+    
     res.status(200).json(cars);
   } catch (err) {
     res.status(400).json(err);

@@ -78,7 +78,6 @@ router.get('/car-search', withAuth, async (req, res) => {
 router.post('/recalls/results', async (req, res) => {
   try {
     const recallsResults = await nhtsa.getRecalls(req.body['recall-make'], req.body['recall-model'], req.body['recall-year']);
-console.log(recallsResults);
      res.render('recalls-results', {
       recallsResults,
       logged_in: req.session.logged_in 
@@ -110,9 +109,7 @@ router.get('/safety-ratings/:vehicleId', async (req, res) => {
 
 router.post('/safety-ratings/vehicles', async (req, res) => {
   try {
-    console.log(req.body);
     const vehicles = await nhtsa.getVehicleId(req.body['year'], req.body['make'], req.body['model']);
-console.log(vehicles)
      res.render('safety-ratings-vehicles', {
       vehicles,
       logged_in: req.session.logged_in 

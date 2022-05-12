@@ -1,3 +1,48 @@
+/* Navbar Styling */
+.nav-decoration {
+  background-color: #0583D2;
+  border-bottom: #e9c440 solid 0.5em;
+}
+
+small {
+  font-style: italic;
+  margin-bottom: 5px;
+}
+.card-title {
+  color: #0583D2;
+  /* background-color: #534293; */
+}
+
+h3 {
+  color: #e9c440;
+}
+
+.list-styling {
+  background-color: #e9c440;
+  width: 20%;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+  font-size: 50px;
+  color: #fff;
+  text-align: center;
+  background: #e9c440;
+}
+
+.circle-safety {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 60%;
+  font-size: 50px;
+  color: #e9c440;
+  text-align: center;
+  background: #0583D2;
+}
 
 /* Modify login button*/
 .btn-bd-login {
@@ -15,6 +60,7 @@
 
 li {
   list-style: none;
+  padding: 5px;
 }
 
 /* === Forms === */
