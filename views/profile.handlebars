@@ -1,48 +1,65 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
-  </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Yo yo yo:</h3>
-
-    <form class="form new-project-form">
-      <div class="form-group">
-        <label for="project-name">project name:</label>
-        <input class="form-input" type="text" id="project-name" name="project-name" />
+  <div class="container d-flex justify-content-center">
+        <div class="row justify-content-center">
+          <div class="card w-25 mx-4">
+            <div class="card-body mx-4">
+              <h5 class="card-title">Find My Car</h5>
+              <p class="card-text">Find a car that suits all your needs at the click of a few buttons.</p>
+              <a href="/car-search" class="btn btn-primary mt-5">Let's Go!</a>
+            </div>
+          </div>
+          <div class="card w-25 mx-4">
+            <div class="card-body mx-4">
+              <h5 class="card-title">Find Safety Ratings</h5>
+              <p class="card-text"> Want to look at your current or future vehicle's safety ratings?</p>
+              <a href="/safety-ratings" class="btn btn-primary mt-5">Let's Go!</a>
+            </div>
+          </div>
+          <div class="card w-25 mx-4">
+            <div class="card-body mx-4">
+              <h5 class="card-title">Find Car Recalls</h5>
+              <p class="card-text">Want to see if your car has been recalled? Look no further!</p>
+              <a href="/recalls" class="btn btn-primary mt-5">Let's Go!</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="project-funding">needed funding ($):</label>
-        <input class="form-input" type="number" id="project-funding" name="project-funding" />
-      </div>
-      <div class="form-group">
-        <label for="project-desc">description:</label>
-        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </form>
-  </div>
-
-  {{#if projects.length}}
-  <div class="col-md-6 project-list">
-    <h3>Current Projects:</h3>
-
-    {{#each projects as |project|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
+      <div>
+        <h3>Your Saved Cars:</h3>
+          {{!-- <div class="container border border-primary p-4">
+         {{#each projects as |project|}}
+            <div class="row border border-danger p-4">
+              <div class="col">
+                <img src="#" alt="Image of car">
+              </div>
+              <div class="col">
+                <p1>Car Name</p1>
+              </div>
+          </div>
+        {{/each}} --}}
+    
+{{#each cars as |car|}}
+  <div class="row mb-4 project">
+    <div class="col-md-5">
+      <div class="card shadow p-3 mb-5 bg-white rounded" id="cardz" style="width: 65rem;">
+        <div class="card-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm specific">
+                <ul id="lists">
+              <li><strong> Model:</strong> {{car.Model}}</li>
+              <li><strong>MSRP:</strong> {{car.MSRP}}</li>
+              <li><strong>Capacity:</strong> {{car.passengerCapacity}}</li>
+              <li><strong>Year:</strong> {{car.Year}}</li>
+              <li><strong>Style:</strong> {{car.bodyStyle}}</li>
+              </ul>
+               <button class="btn btn-outline-danger btn-sm" style="font-size:24px">Favorite<i class="fa fa-heart"></i></button>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
-    {{/each}}
   </div>
-  {{/if}}
-</div>
+{{/each}}
+   
+    
 
-<script src="/js/profile.js"></script>

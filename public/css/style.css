@@ -119,3 +119,25 @@ label form [type='checkbox'], label
 form [type='radio'] {
   display: inline-block;
 }
+
+.borders {
+  border-width: 3px;
+  border-radius: 8px;
+  /* border-color: #ffe484; */
+
+};
+ 
+
+ #title1 {
+   text-decoration: underline 2px;
+   font-size: 28px;
+   margin-bottom: 35px;
+   color: #0583d2
+ }
+
+ 
+ strong {
+   color: #0583d2
+ };
+
+ 
