@@ -2,22 +2,39 @@
   <div class="col-md-6">
     <h2>Search</h2>
 
-    <form class="form" action="/cars-results" method="post">
+    <form class="form" action="/cars-results" method="post" onsubmit="validateMyForm()">
       <div class="form-group">
-        <label for="make">Year</label>
-        <input class="form-input" type="text" name="year"/>
+        <label for="make">Minimum Year (Maximum of 2019)</label>
+        <input class="form-input" type="text" id ="year" name="year"/>
       </div>
       <div class="form-group">
-        <label for="model">Passenger Capacity</label>
+        <label for="model">Minimum Passenger Capacity</label>
         <input class="form-input" name="passengerCapacity"/>
       </div>
         <div class="form-group">
-        <label for="year">MSRP</label>
+        <label for="year">Maximum MSRP</label>
         <input class="form-input" name="msrp"/>
       </div>
       <div class="form-group">
-        <button class="btn btn-warning" id="btn" type="submit">Search</button>
+        <button class="btn btn-warning" id="btn" type="submit" onclick="validateMyForm()">Search</button>
       </div>
     </form>
   </div>
 </div>
+
+<script>
+function validateMyForm()
+{
+  let x = document.getElementById("year").value
+  console.log(x)
+  if(isNaN(x) || x > 2019)
+  { 
+    alert('Please input a year before 2020.')
+    event.preventDefault();
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+</script>

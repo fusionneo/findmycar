@@ -1,5 +1,4 @@
 const axios = require('axios');
-
 // Make a request for a user with a given ID
 module.exports = {
   getRecalls: async (make, model, year) => {
