@@ -3,24 +3,26 @@
 </h3>
 {{#each cars as |car|}}
 
-  <div class="row mb-4 project">
-    <div class="col-md-5">
-      <div class="card shadow p-3 mb-5 bg-white rounded" id="cardz" style="width: 65rem;">
-        <div class="card-body">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm specific">
-                <ul id="lists">
-              <li><strong> Model:</strong> {{car.Model}}</li>
-              <li><strong>MSRP:</strong> {{car.MSRP}}</li>
-              <li><strong>Capacity:</strong> {{car.passengerCapacity}}</li>
-              <li><strong>Year:</strong> {{car.Year}}</li>
-              <li><strong>Style:</strong> {{car.bodyStyle}}</li>
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <div class="card shadow p-3 mb-5 bg-white rounded" id="cardz" style="width: 65rem;">
+      <div class="card-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm specific">
+              <ul id="lists">
+                <li><strong> Model:</strong> {{car.Model}}</li>
+                <li><strong>MSRP:</strong> {{car.MSRP}}</li>
+                <li><strong>Capacity:</strong> {{car.passengerCapacity}}</li>
+                <li><strong>Average Gas Mileage:</strong> {{car.avgGasMileage}} <span>MPG</span></li>
+                <li><strong>Year:</strong> {{car.Year}}</li>
+                <li><strong>Style:</strong> {{car.bodyStyle}}</li>
               </ul>
-              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 {{/each}}
