@@ -119,7 +119,7 @@ router.post('/safety-ratings/vehicles', async (req, res) => {
 
 router.post('/cars-results', async (req, res) => {
   try {
-    const response = await axios.get(`${HOST_URL}/api/cars/search?passenger=${req.body["passengerCapacity"]}&msrp=${req.body["msrp"]}&year=${req.body["year"]}`);
+    const response = await axios.get(`https://e-frech-find-my-car.herokuapp.com/api/cars/search?passenger=${req.body["passengerCapacity"]}&msrp=${req.body["msrp"]}&year=${req.body["year"]}`);
     const cars = response.data;
 
     res.render('cars-results', {
